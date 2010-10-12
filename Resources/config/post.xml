@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+    
+    <services>
+        <service id="model.post.filter" class="Application\MadoquaBundle\Filter\Markdown">
+            <argument type="service" id="markdown_parser" />
+        </service>
+        
+        <service id="model.post.mapper" class="Application\MadoquaBundle\Model\Post\Mapper">
+            <argument type="string">/Users/naneau/Sites/naneau.net/posts/</argument>
+            <argument type="service" id="model.post.filter" />
+        </service>
+        
+        <service id="model.post" class="Application\MadoquaBundle\Service\Post">
+            <argument type="service" id="model.post.mapper" />
+        </service>
+        
+    </services>
+</container>
