@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $service = $this->container->get('model.post');
         $post = $service->getByIdentifier($identifier);
-        
+
         return $this->render('MadoquaBundle:Post:read', array('post' => $post));
     }
     

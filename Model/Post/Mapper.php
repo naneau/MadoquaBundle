@@ -43,17 +43,16 @@ class Mapper
     public function getByIdentifier($identifier)
     {
         $filename = $identifier . '.markdown';
-        
         $finder = $this->createFinder()
             ->name($filename)
             ;
-        
         if (iterator_count($finder) == 0) {
             throw new \Exception('Post not found: "' . $identifier . '"');
         }
-        
         foreach($finder as $file) {
+            return $this->createFileFromFileInfo($file);
         }
+        
     }
     
     /**
@@ -62,7 +61,7 @@ class Mapper
      * @param int $count 
      * @return array[int]Post
      */
-    public function getLatest($count = 3) 
+    public function getLatest($count = 5) 
     {
         $finder = $this->createFinder()
             ->sort(function(\SplFileInfo $file1, \SplFileInfo $file2){
@@ -88,18 +87,23 @@ class Mapper
     private function createFileFromFileInfo(\SplFileInfo $file)
     {
         $post = new Post($this->getFilter());
+        
         $post->setText(file_get_contents((string) $file));
         
-        $matches = array();
+        $post->setIdentifier(str_replace('.markdown', '', $file->getFilename()));
         
+        $post->setCreated($file->getCTime());
+        
+        $matches = array();
         $found = preg_match('/#.*/', $post->getText(), $matches);
         if ($found === false) {
             $title = $file->getFilename();
         } else {
-            $title = array_shift($matches);
+            $title = ltrim(array_shift($matches), '#');
         }
         $post->setTitle($title);
         //parse title out of body text
+        
         return $post;
     }
     
@@ -154,8 +158,8 @@ class Mapper
     {
         $finder = new Finder();
         $finder->in($this->directory)
-            ->name('*.markdown');
-            
+            // ->name('*.markdown');
+            ;
         return $finder;
     }
 }
