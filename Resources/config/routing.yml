@@ -1,6 +1,6 @@
 home:
     pattern:  /
-    defaults: { _controller: MadoquaBundle:Index:index}
+    defaults: { _controller: MadoquaBundle:Post:index}
     
 post_read:
     pattern: post/:identifier

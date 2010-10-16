@@ -33,6 +33,21 @@ class PostController extends Controller
 
         return $this->render('MadoquaBundle:Post:read', array('post' => $post));
     }
+
+    /**
+     * show latest posts
+     *
+     * @return Repsonse
+     */
+    public function indexAction()
+    {
+        $service = $this->container->get('model.post');
+        $posts = $service->getLatest(1);
+        if (count($posts) == 0) {
+            throw new \LogicException('Can\'t show index without at least one post');
+        }
+        return $this->render('MadoquaBundle:Post:read', array('post' => array_pop($posts)));
+    }
     
     /**
      * show latest posts

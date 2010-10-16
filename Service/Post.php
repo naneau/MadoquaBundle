@@ -52,11 +52,12 @@ class Post
     /**
      * get latest posts
      *
+     * @param int $count number of posts to fetch
      * @return array[int]PostDO
      */
-    public function getLatest()
+    public function getLatest($count = 5)
     {
-        return $this->getMapper()->getLatest();
+        return $this->getMapper()->getLatest($count);
     }
     
     /**
