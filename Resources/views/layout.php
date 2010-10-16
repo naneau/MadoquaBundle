@@ -9,24 +9,29 @@
 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" type="text/css" href="<?php// echo $view->assets->getUrl('/bundles/madoqua/css/naneau.css'); ?>" media="all">   -->
-    <link rel="stylesheet" type="text/css" href="/bundles/madoqua/css/naneau.css" media="all">      
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo $view['assets']->getUrl('/bundles/madoqua/css/naneau.css'); ?>" media="all">  
+    
     <title>Naneau</title>
 </head>
+
 <body>
     <div id="all">
-        <!-- <div id="top">
+        <section id="top">
             <h1>Naneau</h1>
-        </div> -->
+        </section>
         
         <section id="content">
             <?php $view['slots']->output('_content') ?>
         </section>
         
         <section id="footer">
-            <!-- <h1>More</h1> -->
+            
+            <h1 class="more">More</h1>
+            
             <div class="footer-wrapper">
                 
                 <?php echo $view['actions']->output('MadoquaBundle:Post:latest'); ?>
@@ -42,6 +47,7 @@
                 </section>
             
                 <div class="clear"></div>
+                
             </div>
         </section>
     </div>
