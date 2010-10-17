@@ -157,6 +157,23 @@ class Post
     }
     
     /**
+     * get intro
+     *
+     * @return string
+     */
+    public function getIntro()
+    {
+        $matches = array();
+        if (preg_match('/\<p\>(.*)\<\/p\>/sU', $this->getParsedText(), $matches) > 0) {
+            if (!empty($matches[1])) {
+                return $matches[1];                
+            }
+        }
+        
+        return $this->getText();
+    }
+    
+    /**
      * get parsed text
      *
      * @return string
