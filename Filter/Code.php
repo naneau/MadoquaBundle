@@ -37,6 +37,7 @@ class Code implements Filter
      */
     public function filter($text)
     {
+        return $text;
         return preg_replace_callback(
             self::$regex,
             

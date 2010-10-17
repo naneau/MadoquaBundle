@@ -9,12 +9,15 @@
  * @subpackage      Resource
  */
 
+
+
 ?>
 <section id="blog-latest-posts">
-    <h1>Latest posts</h1>
+    
     <ul class="blog-latest-posts">
         <?php foreach($posts as $post) : ?>
-        <li>
+        <li class="<?php echo $view['alternate']->alternate(array('t0', 't1')); ?>">
+            
             <a class="title" href="<?php echo $view['router']->generate('post_read', array('identifier' => $post->getIdentifier())); ?>">
                 <?php echo $post->getTitle(); ?>
             </a>

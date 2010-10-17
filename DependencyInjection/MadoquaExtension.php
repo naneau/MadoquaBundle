@@ -45,7 +45,6 @@ class MadoquaExtension extends Extension
         $file = $tag . '.xml';
         
         $this->getLoader($configuration)->load($file);
-        
         return $configuration;
     }
 

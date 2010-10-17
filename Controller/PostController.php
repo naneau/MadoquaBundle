@@ -57,10 +57,14 @@ class PostController extends Controller
      *
      * @return Repsonse
      */
-    public function latestAction()
+    public function latestAction($count = 5)
     {
         $service = $this->container->get('model.post');
-        $posts = $service->getLatest();
+        $posts = $service->getLatest($count);
+        
+        if (count($posts) == 0) {
+            throw new NotFoundHttpException('No posts to display');
+        }
         
         return $this->render('MadoquaBundle:Post:latest', array('posts' => $posts));
     }

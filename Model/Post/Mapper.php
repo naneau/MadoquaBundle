@@ -66,6 +66,7 @@ class Mapper
     public function getLatest($count = 5) 
     {
         $finder = $this->createFinder()
+            ->name('*.markdown')        
             ->sort(function(\SplFileInfo $file1, \SplFileInfo $file2){
                 return $file1->getCTime() < $file2->getCTime();
             });

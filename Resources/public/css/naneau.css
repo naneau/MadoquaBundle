@@ -286,7 +286,7 @@ section.blog-post a {
 #content a:hover {
 }
 
-#blog-latest-posts {
+.blog-post-read #blog-latest-posts {
 	float: left;
 	width: 329px;
 	position: relative;
@@ -294,16 +294,36 @@ section.blog-post a {
 	border-left: 1px dotted #a6a8a8;
 	padding: 0 0 0 20px;
 }
-#blog-latest-posts h1 {
+.blog-post-read #blog-latest-posts h1 {
 	display: none;
 }
-ul.blog-latest-posts li {
+.blog-post-read ul.blog-latest-posts li {
 	/*list-style-position: inside;
 	list-style-type: square;*/
 	/*line-height: 1.2em;*/
 	margin: 0 0 10px 0;
 	padding: 0 0 10px 0;
 	border-bottom: 1px dotted #a6a8a8;	
+}
+.exception ul.blog-latest-posts li {
+	display: block;
+	width: 429px;
+	float: left;
+	margin-bottom: 20px;
+}
+.exception ul.blog-latest-posts li .more {
+	border-bottom: 1px dotted #a6a8a8;	
+	padding-bottom: 20px;
+}
+.exception ul.blog-latest-posts li.t0 {
+	border-right: 1px dotted #a6a8a8;	
+	padding-right: 20px;
+}
+.exception ul.blog-latest-posts li.t1 {
+	border-left: 1px dotted #a6a8a8;	
+	padding-left: 20px;
+	position: relative;
+	left: -1px;
 }
 ul.blog-latest-posts li a.title {
 	font-family: FontinBold;
