@@ -294,6 +294,9 @@ section.blog-post a {
 	border-left: 1px dotted #a6a8a8;
 	padding: 0 0 0 20px;
 }
+#blog-latest-posts h1 {
+	display: none;
+}
 ul.blog-latest-posts li {
 	/*list-style-position: inside;
 	list-style-type: square;*/
