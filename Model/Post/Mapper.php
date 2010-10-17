@@ -46,9 +46,11 @@ class Mapper
         $finder = $this->createFinder()
             ->name($filename)
             ;
+            
         if (iterator_count($finder) == 0) {
-            throw new \Exception('Post not found: "' . $identifier . '"');
+            return false;
         }
+        
         foreach($finder as $file) {
             return $this->createFileFromFileInfo($file);
         }

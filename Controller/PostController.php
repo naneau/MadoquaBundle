@@ -10,6 +10,7 @@
 namespace Application\MadoquaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * PostController
@@ -30,7 +31,9 @@ class PostController extends Controller
     {
         $service = $this->container->get('model.post');
         $post = $service->getByIdentifier($identifier);
-
+        if ($post === false) {
+            throw new NotFoundHttpException('Post not found "' . $identifier . '"');
+        }
         return $this->render('MadoquaBundle:Post:read', array('post' => $post));
     }
 
@@ -44,7 +47,7 @@ class PostController extends Controller
         $service = $this->container->get('model.post');
         $posts = $service->getLatest(1);
         if (count($posts) == 0) {
-            throw new \LogicException('Can\'t show index without at least one post');
+            throw new NotFoundHttpException('Can\'t show index without at least one post');
         }
         return $this->render('MadoquaBundle:Post:read', array('post' => array_pop($posts)));
     }
