@@ -305,11 +305,13 @@ section.blog-post a {
 	padding: 0 0 10px 0;
 	border-bottom: 1px dotted #a6a8a8;	
 }
+
 .exception ul.blog-latest-posts li {
 	display: block;
 	width: 429px;
 	float: left;
-	margin-bottom: 20px;
+	margin: 0;
+	/*padding-bottom: 20px;*/
 }
 .exception ul.blog-latest-posts li .more {
 	border-bottom: 1px dotted #a6a8a8;	
@@ -318,13 +320,16 @@ section.blog-post a {
 .exception ul.blog-latest-posts li.t0 {
 	border-right: 1px dotted #a6a8a8;	
 	padding-right: 20px;
+	clear: left;
 }
 .exception ul.blog-latest-posts li.t1 {
 	border-left: 1px dotted #a6a8a8;	
 	padding-left: 20px;
 	position: relative;
 	left: -1px;
+	clear: right;
 }
+
 ul.blog-latest-posts li a.title {
 	font-family: FontinBold;
 	line-height: 1em;
