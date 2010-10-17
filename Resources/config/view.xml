@@ -5,7 +5,7 @@
     
     <services>
         
-        <service id="templating.helper.assets" class="Application\MadoquaBundle\Templating\Helper\Alternate">
+        <service id="templating.helper.alternate" class="Application\MadoquaBundle\Templating\Helper\Alternate">
             <tag name="templating.helper" alias="alternate" />
         </service>
                 

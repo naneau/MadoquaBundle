@@ -9,8 +9,6 @@
  * @subpackage      Resource
  */
 
-
-
 ?>
 <section id="blog-latest-posts">
     
@@ -34,5 +32,4 @@
         <?php endforeach; ?>
     </ul>
 
-    <!-- <a class="blog-archive action" href="#">Archive</a> -->
 </section>

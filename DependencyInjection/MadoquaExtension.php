@@ -44,7 +44,8 @@ class MadoquaExtension extends Extension
     {
         $file = $tag . '.xml';
         
-        $this->getLoader($configuration)->load($file);
+        $x = $this->getLoader($configuration)->load($file);
+        
         return $configuration;
     }
 
@@ -87,9 +88,9 @@ class MadoquaExtension extends Extension
      */
     private function getLoader($configuration)
     {
-        if (!$this->loader) {
+        // if (!$this->loader) {
             $this->loader = new XmlFileLoader($configuration, __DIR__ . '/../Resources/config/');
-        }
+        // }
         
         return $this->loader;
     }    

@@ -4,9 +4,6 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
     
     <services>
-        <service id="templating.helper.alternate" class="Application\MadoquaBundle\Templating\Helper\Alternate">
-            <tag name="templating.helper" alias="alternate" />
-        </service>
         
         <!--filter for the post text, is a chain of filters -->
         <service id="model.post.filter" class="Application\MadoquaBundle\Filter\FilterChain">
