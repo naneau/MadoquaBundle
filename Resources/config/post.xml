@@ -4,8 +4,14 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
     
     <services>
-        <service id="model.post.filter" class="Application\MadoquaBundle\Filter\Markdown">
-            <argument type="service" id="markdown_parser" />
+        
+        <!--filter for the post text, is a chain of filters -->
+        <service id="model.post.filter" class="Application\MadoquaBundle\Filter\FilterChain">
+            <argument type="service">
+              <service class="Application\MadoquaBundle\Filter\Markdown">
+                  <argument type="service" id="markdown_parser" />
+              </service>
+            </argument>
         </service>
         
         <service id="model.post.mapper" class="Application\MadoquaBundle\Model\Post\Mapper">

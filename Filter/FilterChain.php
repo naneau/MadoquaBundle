@@ -9,7 +9,7 @@
 
 namespace Application\MadoquaBundle\Filter;
 
-use Application\MadoquaBundle\Filter;
+use Application\MadoquaBundle\Filter\Filter;
 
 /**
  * FilterChain
