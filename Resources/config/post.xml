@@ -7,11 +7,19 @@
         
         <!--filter for the post text, is a chain of filters -->
         <service id="model.post.filter" class="Application\MadoquaBundle\Filter\FilterChain">
+            
+            <!-- we start with markdown -->
             <argument type="service">
               <service class="Application\MadoquaBundle\Filter\Markdown">
                   <argument type="service" id="markdown_parser" />
               </service>
             </argument>
+            
+            <!-- but we also want to look for <code>#lang</code> blocks for highlightin' -->
+            <argument type="service">
+              <service class="Application\MadoquaBundle\Filter\Code" />
+            </argument>
+            
         </service>
         
         <service id="model.post.mapper" class="Application\MadoquaBundle\Model\Post\Mapper">
