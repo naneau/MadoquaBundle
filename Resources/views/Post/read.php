@@ -6,3 +6,6 @@
     </span> -->
     <?php echo $post->getRawValue()->getParsedText(); ?>
 </section>
+
+<?php echo $view['actions']->output('MadoquaBundle:Post:latest'); ?>
+<!-- latest posts -->

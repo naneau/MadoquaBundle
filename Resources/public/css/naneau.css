@@ -1,6 +1,6 @@
 /* @override 
-	http://naneau/css/naneau.css
 	http://naneau/bundles/madoqua/css/naneau.css
+	http://naneau/bundles/madoqua/css/naneau.css?1
 */
 /* @group Fonts */
 
@@ -184,32 +184,24 @@ a {
 section {
 	
 	display: block;
-}/* @end */
+}
+/* @end */
 
+/* @group Defaults */
 body {
 	font-family: DeliciousRoman;
-	/*font-family: FontinRegular;*/
 	line-height: 1.8em;
 	font-size: 1em;
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
-	/*background-color: #e6e9ea;*/
 	background-color:#f0f3f4;
 	color: #171c1e;	
 }
-#content, #footer, #top {
-	width: 1000px;
+
+#content, #top {
+	width: 900px;
 	margin: 0 auto;
 }
-#footer {
-	display: none;
-}
-#content {
-	/*border: 1px solid #dee1e3;
-	background-color: #f0f3f4;
-	padding: 20px;
-	width: 760px;
-	border-radius:5px*/	
-}
+
 h1, h2, h3, h4, h5 {
 	font-family: FontinBold, "Lucida Grande", Lucida, Verdana, sans-serif;
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
@@ -240,31 +232,18 @@ blockquote {
 .date {
 	color: #a6a8a8;
 }
+strong {
+	font-family: DeliciousBold;
+}
+em {
+	font-family: DeliciousItalic;
+}
 p {
 	margin:0 0 15px 0;
 }
-#content strong {
-	font-family: DeliciousBold;
-}
-#content em {
-	font-family: DeliciousItalic;
-}
-#content a {
-	font-family: DeliciousBold;
-	color: #d46938;	
-	border-bottom: 1px dotted #d46938;
-}
-#content a:hover {
-}
-#content ul {
-	line-height: 1.5em;
-	margin: 0 0 10px 0;
-}
-#content li {
-	margin: 0 0 3px 10px;
-	list-style-type: square;
-	list-style-position: inside;
-}
+
+/* @end */
+/* @group Top */
 #top {
 	padding: 20px 0;
 	margin-bottom: 20px;
@@ -281,35 +260,39 @@ p {
 	color: #d2612d;
 	margin: 0;
 }
-#footer {
-	/*border-top: 1px dotted #a6a8a8;
-	padding: 10px 0 0 0;*/
-}
-#footer h1.more {
-	font-family: DeliciousBold;
-	font-size: 2em;
-	color: #d2612d;
-	padding: 0 0 15px 0;
-	margin: 0 0 10px 0;
-	border-bottom: 1px dotted #a6a8a8;
-	
-}
-.blog-post {
+/* @end */
+
+/* @group Blog Post */
+section.blog-post {
 	border-right: 1px dotted #a6a8a8;
-	width: 550px;
+	width: 529px;
 	padding: 0 20px 0 0;
 	float: left;
 }
-#blog-latest-posts, #welcome {
-	float: left;
-	width: 339px;
+section.blog-post ul {
+	line-height: 1.5em;
+	margin: 0 0 10px 0;
 }
+section.blog-post li {
+	margin: 0 0 3px 10px;
+	list-style-type: square;
+	list-style-position: inside;
+}
+section.blog-post a {
+	font-family: DeliciousBold;
+	color: #d46938;	
+	border-bottom: 1px dotted #d46938;
+}
+#content a:hover {
+}
+
 #blog-latest-posts {
-	width: 339px;
+	float: left;
+	width: 329px;
 	position: relative;
 	left: -1px;
 	border-left: 1px dotted #a6a8a8;
-	padding: 0 0px 0 20px;
+	padding: 0 0 0 20px;
 }
 ul.blog-latest-posts li {
 	/*list-style-position: inside;
@@ -338,6 +321,7 @@ ul.blog-latest-posts li .more {
 	color: #a6a8a8;	
 	line-height: 1em;	
 }
+/* @end */
 #welcome {
 	border-left: 1px dotted #a6a8a8;
 	position: relative;
