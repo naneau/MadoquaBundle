@@ -28,6 +28,7 @@ class Code implements Filter
      */
     public function filter($text)
     {
-        
+        $text = preg_replace('/\<code\>\n*\#(.*)/', '<code lang="$1">', $text);
+        return $text;
     }
 }
