@@ -11,7 +11,7 @@
 
 ?>
 <section id="blog-latest-posts">
-    <h1>Latest blog posts</h1>
+    <h1>Latest posts</h1>
     <ul class="blog-latest-posts">
         <?php foreach($posts as $post) : ?>
         <li>
@@ -31,5 +31,5 @@
         <?php endforeach; ?>
     </ul>
 
-    <a class="blog-archive action" href="#">Archive</a>
+    <!-- <a class="blog-archive action" href="#">Archive</a> -->
 </section>

@@ -3,15 +3,17 @@
 	http://naneau/bundles/madoqua/css/naneau.css
 */
 /* @group Fonts */
-@font-face {  
-  font-family: Monaco;  
-  src: url(monaco.ttf) format("truetype");  
-} 
 
-@font-face {  
-  font-family: Inconsolata
-  src: url(../fonts/inconsolata/Inconsolata.ttf) format("opentype");
-} 
+@font-face {
+	font-family: 'InconsolataMedium';
+	src: url('../fonts/inconsolata/inconsolata-webfont.eot');
+	src: local('☺'),
+		url('../fonts/inconsolata/inconsolata-webfont.woff') format('woff'),
+		url('../fonts/inconsolata/inconsolata-webfont.ttf') format('truetype'),
+		url('../fonts/inconsolata/inconsolata-webfont.svg#webfont0yxWm3LH') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 /* A font by Jos Buivenga (exljbris) -> www.exljbris.nl */
 @font-face {
@@ -187,7 +189,7 @@ section {
 body {
 	font-family: DeliciousRoman;
 	/*font-family: FontinRegular;*/
-	line-height: 1.7em;
+	line-height: 1.8em;
 	font-size: 1em;
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
 	/*background-color: #e6e9ea;*/
@@ -195,8 +197,11 @@ body {
 	color: #171c1e;	
 }
 #content, #footer, #top {
-	width: 800px;
+	width: 1000px;
 	margin: 0 auto;
+}
+#footer {
+	display: none;
 }
 #content {
 	/*border: 1px solid #dee1e3;
@@ -220,28 +225,72 @@ h1 {
 	font-size: 1.3em;
 	margin: 0 0 5px 0;	
 }
+hr {
+	height: 0px;
+	border: 0;
+	border-top: 1px solid #dbdee2;
+}
+blockquote {
+	font-family: FontinItalic;
+	padding: 0 40px;
+	color: #717273;
+	font-size: 1.2em;
+	border-top: 1px s #fff;
+}
 .date {
 	color: #a6a8a8;
 }
 pre, code {
-	font-family: Inconsolata;
+	font-family: InconsolataMedium;
 	font-size: 1em;
-	color: #383939;
+	line-height: 1.2em;
+	color: #101214;
+	/*color:#fff;*/
+	text-shadow: 0px 0px 3px rgba(255,255,255, 0.5);
 }
 p code, pre {
-	background-color: #e6e9ea;
-	border: 1px solid #dbdee2;
-	border-radius:5px
+	
+	border-radius:3px;
+	
+	background-color: #cfe1e9;
+	border: 1px solid #bed0d8;
+	
+	/*background-color: #e6e9ea;
+	border: 1px solid #dbdee2;*/
+
 }
 p code {
 	padding: 2px 5px;
 }
 pre {
-	padding: 10px;
+	padding: 5px 10px;
 	margin: 0 0 10px 0;
+	overflow-x:auto;
 }
 p {
 	margin:0 0 15px 0;
+}
+#content strong {
+	font-family: DeliciousBold;
+}
+#content em {
+	font-family: DeliciousItalic;
+}
+#content a {
+	font-family: DeliciousBold;
+	color: #d46938;	
+	border-bottom: 1px dotted #d46938;
+}
+#content a:hover {
+}
+#content ul {
+	line-height: 1.5em;
+	margin: 0 0 10px 0;
+}
+#content li {
+	margin: 0 0 3px 10px;
+	list-style-type: square;
+	list-style-position: inside;
 }
 #top {
 	padding: 20px 0;
@@ -267,46 +316,54 @@ p {
 	font-family: DeliciousBold;
 	font-size: 2em;
 	color: #d2612d;
-	padding: 0 0 20px 0;
-	margin: 0 0 20px 0;
+	padding: 0 0 15px 0;
+	margin: 0 0 10px 0;
 	border-bottom: 1px dotted #a6a8a8;
 	
 }
+.blog-post {
+	border-right: 1px dotted #a6a8a8;
+	width: 550px;
+	padding: 0 20px 0 0;
+	float: left;
+}
 #blog-latest-posts, #welcome {
 	float: left;
-	width: 389px;
+	width: 339px;
 }
 #blog-latest-posts {
-	border-right: 1px dotted #a6a8a8;
-	padding: 0 10px 0 0;
+	width: 339px;
+	position: relative;
+	left: -1px;
+	border-left: 1px dotted #a6a8a8;
+	padding: 0 0px 0 20px;
 }
 ul.blog-latest-posts li {
 	/*list-style-position: inside;
 	list-style-type: square;*/
-	line-height: 1.2em;
+	/*line-height: 1.2em;*/
 	margin: 0 0 10px 0;
 	padding: 0 0 10px 0;
 	border-bottom: 1px dotted #a6a8a8;	
 }
 ul.blog-latest-posts li a.title {
-	font-family: FontinBold;/*
-	font-size: 1.2em;;
-	display: block;*/
-	/*color: #d46938;*/
+	font-family: FontinBold;
+	line-height: 1em;
 }
 ul.blog-latest-posts li .intro {
-	/*font-size: 0.8em;*/
 	margin: 0;
 }
 ul.blog-latest-posts li .date {
 	display: block;
 	font-size: 0.8em;
+	line-height: 1em;	
 }
 ul.blog-latest-posts li .more {
 	display: block;
 	/*text-align: right;*/
 	font-size: 0.8em;
 	color: #a6a8a8;	
+	line-height: 1em;	
 }
 #welcome {
 	border-left: 1px dotted #a6a8a8;
