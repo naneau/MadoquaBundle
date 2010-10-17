@@ -60,6 +60,6 @@ class FilterChain implements Filter
         foreach($this->filters as $filter) {
             $text = $filter->filter($text);
         }
-        return $filter;
+        return $text;
     }
 }
