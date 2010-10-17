@@ -9,7 +9,7 @@
         </service>
         
         <service id="model.post.mapper" class="Application\MadoquaBundle\Model\Post\Mapper">
-            <argument type="string">/Users/naneau/Sites/naneau.net/posts/</argument>
+            <argument type="string">%madoqua.post.directory%</argument>
             <argument type="service" id="model.post.filter" />
         </service>
         
