@@ -6,7 +6,11 @@ MadoquaBundle is a very basic, markdown based blogging engine for Symfony2. It r
 
 There's a simple service in Service/Post.php that describes the functionality.
 
+You should be able to run this bundle in the latest sf2 sandbox.
+
 ##Configuration
+
+Configuration options for the root config of your application.
 
     parameters:
         #directory of your posts
@@ -31,4 +35,4 @@ The markdown used in the posts has but one simple extension over [vanilla](http:
 
 ##Dependencies
 
-For the markdown parsing it relies on [KNPLabs' MarkdownBundle](http://github.com/knplabs/MarkdownBundle)
+For the markdown parsing it relies on [KNPLabs' MarkdownBundle](http://github.com/knplabs/MarkdownBundle), although there's a [tiny patch](http://github.com/naneau/MarkdownBundle/commit/566384f1c4866808c0e1086e5f37d510485f7f38) required, so for the time being you'll have to use [naneau's branch](http://github.com/naneau/MarkdownBundle).
