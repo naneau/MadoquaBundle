@@ -6,7 +6,7 @@ MadoquaBundle is a very basic, markdown based blogging engine for Symfony2. It r
 
 There's a simple service in Service/Post.php that describes the functionality.
 
-You should be able to run this bundle in the latest [sf2 sandbox](http://symfony-reloaded.org/code).
+You should be able to run this bundle in the latest [sf2 sandbox](http://symfony-reloaded.org/code). For speed reasons it's probably a good idea to run your Kernel in a cache wrapper, since there is no caching in the service/model layer.
 
 ##Configuration
 
