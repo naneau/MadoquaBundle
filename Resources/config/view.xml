@@ -10,7 +10,7 @@
         </service>
         
         <service id="templating.helper.title" class="Application\MadoquaBundle\Templating\Helper\Title">
-            <argument type="string">%madoqua.title%</argument>
+            <argument type="string">%madoqua.name%</argument>
             <tag name="templating.helper" alias="title" />
         </service>
                 
