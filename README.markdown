@@ -16,9 +16,6 @@ Configuration options for the root config of your application.
         #directory of your posts
         madoqua.post.directory: "/abs/dir/to/your/posts/"
         
-        #root url 
-        madoqua.url: "http://your.url/"
-        
         #Name of your blog
         madoqua.name: "A Name For Your Blog"
         
