@@ -8,6 +8,11 @@
         <service id="templating.helper.alternate" class="Application\MadoquaBundle\Templating\Helper\Alternate">
             <tag name="templating.helper" alias="alternate" />
         </service>
+        
+        <service id="templating.helper.title" class="Application\MadoquaBundle\Templating\Helper\Title">
+            <argument type="string">%madoqua.title%</argument>
+            <tag name="templating.helper" alias="title" />
+        </service>
                 
     </services>
 </container>
