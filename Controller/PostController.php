@@ -78,7 +78,7 @@ class PostController extends Controller
         }
         //only render on not modified
         
-        return $this->render('MadoquaBundle:Post:read', array(
+        return $this->render($this->container->getParameter('madoqua.view.scripts.postread'), array(
                 'post' => $post
             ), $response);
         //render post:read
@@ -122,7 +122,7 @@ class PostController extends Controller
         }
         //only render on not modified
             
-        return $this->render('MadoquaBundle:Post:latest', array(
+        return $this->render($this->container->getParameter('madoqua.view.scripts.postlatest'), array(
                 'posts' => $posts
             ), $response);
         //render response
