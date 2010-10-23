@@ -8,4 +8,4 @@ There's a simple service in Service/Post.php that describes the functionality.
 
 ##Dependencies
 
-For the markdown parsing it relies on KNPLabs' MarkdownBundle @ http://github.com/knplabs/MarkdownBundle
+For the markdown parsing it relies on [KNPLabs' MarkdownBundle](http://github.com/knplabs/MarkdownBundle)
