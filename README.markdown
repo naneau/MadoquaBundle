@@ -19,6 +19,10 @@ Configuration options for the root config of your application.
         #Name of your blog
         madoqua.name: "A Name For Your Blog"
         
+        #view scripts, set these to use a different view/theme
+        madoqua.view.scripts.postread: "MadoquaBundle:Post:read"
+        madoqua.view.scripts.postlatest: "MadoquaBundle:Post:latest"
+        
         #optional if you don't have a handler already
         exception_listener.controller: "Application\MadoquaBundle\Controller\ExceptionController::handleAction" 
     
