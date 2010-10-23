@@ -9,11 +9,19 @@ There's a simple service in Service/Post.php that describes the functionality.
 ##Configuration
 
     parameters:
+        #directory of your posts
         madoqua.post.directory: "/abs/dir/to/your/posts/"
-        exception_listener.controller: "Application\MadoquaBundle\Controller\ExceptionController::handleAction" #optional if you don't have a handler already
+        
+        #root url 
         madoqua.url: "http://your.url/"
-        madoqua.title: "A Name For Your Blog"
+        
+        #Name of your blog
+        madoqua.name: "A Name For Your Blog"
+        
+        #optional if you don't have a handler already
+        exception_listener.controller: "Application\MadoquaBundle\Controller\ExceptionController::handleAction" 
     
+    #DIC config
     madoqua.view: ~ #madoqua view helpers
     madoqua.post: ~ #madoqua post domain
 
