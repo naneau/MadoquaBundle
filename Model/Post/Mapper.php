@@ -96,6 +96,7 @@ class Mapper
         $post->setIdentifier(str_replace('.markdown', '', $file->getFilename()));
         
         $post->setCreated($file->getCTime());
+        $post->setModified($file->getMTime());
         
         $matches = array();
         $found = preg_match('/#.*/', $post->getText(), $matches);

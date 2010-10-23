@@ -4,7 +4,7 @@
     
     <section class="blog-post">
         <!-- <span class="date">
-            <?php echo strftime('%c', $post->getCreated()); ?>
+            <?php echo strftime('%c', $post->getCreated()->getTimestamp()); ?>
         </span> -->
         <?php echo $post->getRawValue()->getParsedText(); ?>
     </section>

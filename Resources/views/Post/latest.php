@@ -20,7 +20,7 @@
                 <?php echo $post->getTitle(); ?>
             </a>
             <a href="<?php echo $view['router']->generate('post_read', array('identifier' => $post->getIdentifier())); ?>">            
-                <span class="date"><?php echo strftime('%c', $post->getCreated()); ?></span>            
+                <span class="date"><?php echo strftime('%c', $post->getCreated()->getTimestamp()); ?></span>            
             </a>
             <p class="intro">
                 <?php echo $post->getIntro(); ?>

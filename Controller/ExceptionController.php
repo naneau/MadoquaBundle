@@ -9,6 +9,7 @@
 namespace Application\MadoquaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\FlattenException;
 
 /**
  * ExceptionController
@@ -22,10 +23,10 @@ class ExceptionController extends Controller
     /**
      * handle an exception
      *
-     * @param Exception $exception
+     * @param FlattenException $exception
      * @return void
      */
-    public function handleAction($exception)
+    public function handleAction(FlattenException $exception)
     {
         $response = $this->render('MadoquaBundle:Exception:handle', array('exception' => $exception));
         $response->setStatusCode($exception->getStatusCode());

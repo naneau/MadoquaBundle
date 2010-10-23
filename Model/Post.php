@@ -49,6 +49,13 @@ class Post
     private $created;
     
     /**
+     * last modified time
+     *
+     * @var string
+     */
+    private $modified;
+    
+    /**
      * parsed text
      *
      * @var string
@@ -132,7 +139,30 @@ class Post
      */
     public function setCreated($created)
     {
-        $this->created = $created;
+        $this->created = new \DateTime;
+        $this->created->setTimestamp($created);
+    }
+
+    /**
+     * get last modified time
+     *
+     * @return string
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * set last modified time
+     *
+     * @param string $modified
+     * @return void
+     */
+    public function setModified($modified)
+    {
+        $this->modified = new \DateTime();
+        $this->modified->setTimestamp($modified);
     }
     
     /**
