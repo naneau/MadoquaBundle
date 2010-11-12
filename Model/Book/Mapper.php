@@ -41,8 +41,8 @@ class Mapper
     /**
      * constructor
      *
-     * @param string $directory 
-     * @param Filter $filter;
+     * @param string $directory directory the book lives in
+     * @param Filter $filter filter for the Page content
      */
     public function __construct($directory, Filter $filter)
     {
