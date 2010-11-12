@@ -9,7 +9,8 @@
 
 namespace Application\MadoquaBundle\Service;
 
-use Application\MadoquaBundle\Model\Book\Book as BookDO;
+use Application\MadoquaBundle\Model\Book\Page as Page;
+use Application\MadoquaBundle\Model\Chapter as Chapter;
 use Application\MadoquaBundle\Model\Book\Mapper;
 
 /**
@@ -36,6 +37,16 @@ class Book
     public function __construct(Mapper $mapper)
     {
         $this->setMapper($mapper);
+    }
+    
+    /**
+     * get main "book" TOC
+     *
+     * @return Chapter
+     */
+    public function getToc()
+    {
+        
     }
     
     /**
