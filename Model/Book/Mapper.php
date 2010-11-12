@@ -169,11 +169,13 @@ class Mapper
         $chapter = new Chapter;
         
         $chapter->setName($fileInfo->getFilename());
+        
         $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
-
         $chapter->setPath(
             str_replace(DIRECTORY_SEPARATOR, '-', $path)
         );
+        //set "path" like identifier
+        
         return $chapter;
     }
     

@@ -21,7 +21,7 @@ $view->extend('MadoquaBundle::layout');
 
         <?php foreach($chapter->getChapters() as $subChapter) : ?>
         <li>
-            <a href="<?php echo $view['router']->generate('book_chapter', array('chapter' => $subChapter->getPath())); ?>">
+            <a href="<?php echo $view['router']->generate('book_chapter', array('path' => $subChapter->getPath())); ?>">
                 <?php echo $subChapter->getName(); ?>
             </a>
         </li>

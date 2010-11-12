@@ -44,9 +44,22 @@ class Book
      *
      * @return Chapter
      */
-    public function getToc()
+    public function getTOC()
     {
         return $this->mapper->getToc();
+    }
+    
+    /**
+     * get chapter from "path" identifier
+     *
+     * @param string $path 
+     * @return Chapter
+     */
+    public function getChapterFromPath($path)
+    {
+        $toc = $this->getTOC();
+        
+        
     }
     
     /**

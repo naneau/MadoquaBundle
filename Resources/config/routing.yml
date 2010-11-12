@@ -11,5 +11,5 @@ book_index:
     defaults: {_controller: MadoquaBundle:Book:index}
 
 book_chapter:
-    pattern: book/chapter/:chapter
+    pattern: book/chapter/:path
     defaults: {_controller: MadoquaBundle:Book:chapter}
