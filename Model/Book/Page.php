@@ -44,6 +44,13 @@ class Page
     private $filter;
     
     /**
+     * obj. cache for parsed text
+     *
+     * @var string
+     */
+    private $parsedText;
+    
+    /**
      * constructor
      *
      * @param Filter $filter 
@@ -123,6 +130,9 @@ class Page
      */
     public function getParsedText()
     {
-        return $this->getFilter()->filter($this->getText());
+        if (empty($this->parsedText)) {
+            $this->parsedText = $this->getFilter()->filter($this->getText());
+        }
+        return $this->parsedText;
     }
 }
