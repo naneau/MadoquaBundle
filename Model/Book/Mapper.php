@@ -59,6 +59,7 @@ class Mapper
     {
         $chapter = new Chapter;
         $chapter->setName('TOC');
+        $chapter->setPath('toc');
         return $this->parseChapterDir($chapter, $this->getDirectory());
     }
     

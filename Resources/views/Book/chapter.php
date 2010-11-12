@@ -15,7 +15,13 @@ $view->extend('MadoquaBundle::layout');
     <h1>
         <?php echo $chapter->getName(); ?>
     </h1>
-
+    
+    <?php if ($chapter->hasParent()) : ?>
+    <a href="<?php echo $view['router']->generate('book_chapter', array('path' => $chapter->getParent()->getPath())); ?>">
+        <?php echo $chapter->getParent()->getName(); ?>
+    </a>
+    <?php endif; ?>
+    
     <?php if (count($chapter->getChapters()) > 0) : ?>
     <ul class="chapters">
 

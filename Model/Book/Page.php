@@ -10,6 +10,7 @@
 namespace Application\MadoquaBundle\Model\Book;
 
 use Application\MadoquaBundle\Filter\Filter;
+use Application\MadoquaBundle\Model\Book\Chapter;
 
 /**
  * Page
@@ -49,6 +50,13 @@ class Page
      * @var string
      */
     private $parsedText;
+    
+    /**
+     * chapter this page is in
+     *
+     * @var Chapter
+     */
+    private $chapter;
     
     /**
      * constructor
@@ -134,5 +142,26 @@ class Page
             $this->parsedText = $this->getFilter()->filter($this->getText());
         }
         return $this->parsedText;
+    }
+    
+    /**
+     * get chapter
+     *
+     * @return Chapter
+     */
+    public function getChapter()
+    {
+        return $this->chapter;
+    }
+
+    /**
+     * set chapter
+     *
+     * @param Chapter $chapter
+     * @return void
+     */
+    public function setChapter($chapter)
+    {
+        $this->chapter = $chapter;
     }
 }

@@ -49,6 +49,13 @@ class Chapter
     private $chapters = array();
     
     /**
+     * parent chapter
+     *
+     * @var Chapter
+     */
+    private $parent;
+    
+    /**
      * get name
      *
      * @return string
@@ -98,6 +105,8 @@ class Chapter
      */
     public function addPage(Page $page)
     {
+        $page->setChapter($this);
+        
         $this->pages[] = $page;
     }
     
@@ -130,6 +139,7 @@ class Chapter
      */
     public function addChapter(Chapter $chapter) 
     {
+        $chapter->setParent($this);
         $this->chapters[] = $chapter;
     }
     
@@ -152,5 +162,36 @@ class Chapter
     public function setPath($path)
     {
         $this->path = $path;
+    }
+    
+    /**
+     * get parent chapter
+     *
+     * @return Chapter
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * set parent chapter
+     *
+     * @param Chapter $parent
+     * @return void
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+    
+    /**
+     * do we have a parent?
+     *
+     * @return bool
+     */
+    public function hasParent()
+    {
+        return !empty($this->parent);
     }
 }

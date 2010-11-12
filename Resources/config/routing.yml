@@ -13,3 +13,7 @@ book_index:
 book_chapter:
     pattern: book/chapter/:path
     defaults: {_controller: MadoquaBundle:Book:chapter}
+
+book_page:
+    pattern: book/page/:path
+    defaults: {_controller: MadoquaBundle:Book:chapter}
