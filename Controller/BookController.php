@@ -46,7 +46,13 @@ class BookController extends Controller
     {
         $service = $this->container->get('service.book');
         
-        return $this->renderChapter($service->getChapterFromPath($path));
+        $chapter = $service->getChapterFromPath($path);
+        
+        if ($chapter === false) {
+            throw new NotFoundHttpException('Chapter not found "' . $path . '"');
+        }
+        
+        return $this->renderChapter($chapter);
     }
     
     /**
@@ -59,6 +65,11 @@ class BookController extends Controller
     {
         $service = $this->container->get('service.book');
         $page = $service->getPageFromPath($path);
+        
+        if ($page === false) {
+            throw new NotFoundHttpException('Page not found "' . $path . '"');
+        }
+        
         return $this->render($this->container->getParameter('madoqua.view.scripts.book.pageread'), array(
             'page' => $page
         ));
