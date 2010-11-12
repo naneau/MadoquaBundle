@@ -253,6 +253,6 @@ class Mapper
         $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
         $path = str_replace(array(DIRECTORY_SEPARATOR, ' '), array('-', '-'), $path);
         $path = str_replace('.markdown', '', $path);
-        return $path;
+        return strtolower($path);
     }
 }
