@@ -147,6 +147,7 @@ class Mapper
         $chapterFinder = new Finder();
         $chapterFinder
             ->in($directory)
+            ->depth(0)
             ->directories();
             //finder for the subdirs
         
@@ -156,8 +157,10 @@ class Mapper
             //subdir to use as a chapter
             
             $chapter->addChapter(
-                $this->parseChapterDir($this->createChapterFromFileInfo($dir), 
-                $newDirectory)
+                $this->parseChapterDir(
+                    $this->createChapterFromFileInfo($dir), 
+                    $newDirectory
+                )
             );
             //parse on recursively
         }
