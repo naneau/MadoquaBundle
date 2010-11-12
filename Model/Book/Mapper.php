@@ -124,7 +124,7 @@ class Mapper
         } else {
             $title = ltrim(array_shift($matches), '#');
         }
-        $page->setTitle($title);
+        $page->setTitle($this->stripNumberFromString($title));
         // //parse title out of body text
         
         $page->setPath(
@@ -178,7 +178,7 @@ class Mapper
     {
         $chapter = new Chapter;
         
-        $chapter->setName($fileInfo->getFilename());
+        $chapter->setName($this->stripNumberFromString($fileInfo->getFilename()));
         
         $chapter->setPath(
             $this->parsePath($fileInfo)
@@ -254,8 +254,27 @@ class Mapper
     private function parsePath(\SplFileInfo $fileInfo)
     {
         $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
+        $path = $this->stripNumberFromString($path);
         $path = str_replace(array(DIRECTORY_SEPARATOR, ' ', '.'), '-', $path);
         $path = str_replace('.markdown', '', $path);
+        
         return strtolower($path);
+    }
+    
+    /**
+     * split number part
+     *
+     * @param string $string 
+     * @return void
+     */
+    private function stripNumberFromString($string)
+    {
+        $parts = explode('-', $string);
+        if (is_numeric(trim($parts[0]))) {
+            unset($parts[0]);
+        }
+        $string = implode('-', $parts);
+        
+        return trim($string, '- ');
     }
 }
