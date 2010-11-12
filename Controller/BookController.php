@@ -33,9 +33,20 @@ class BookController extends Controller
     {
         $service = $this->container->get('service.book');
         
-        var_dump($service->getTOC());
-        
-        die();
-        return $this->createResponse('xxx');
+        return $this->renderChapter($service->getTOC());
+    }
+    
+    /**
+     * render a chapter
+     *
+     * @param Chapter $chapter 
+     * @return Response
+     */
+    private function renderChapter(Chapter $chapter)
+    {
+        return $this->render($this->container->getParameter('madoqua.view.scripts.book.chapterread'), array(
+                'chapter' => $chapter
+            ));
+        //render the chapter view script
     }
 }

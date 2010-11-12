@@ -58,6 +58,7 @@ class Mapper
     public function getToc()
     {
         $chapter = new Chapter;
+        $chapter->setName('TOC');
         return $this->parseChapterDir($chapter, $this->getDirectory());
     }
     
