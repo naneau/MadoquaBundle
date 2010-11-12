@@ -39,7 +39,7 @@ class Chapter
      *
      * @var array[int]Page
      */
-    private $pages;
+    private $pages = array();
     
     /**
      * chapters
