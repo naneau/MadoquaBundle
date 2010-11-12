@@ -95,7 +95,7 @@ class Mapper
             //finder for the subdirs
         
         foreach($pageFinder as $file) {
-            $newDirectory = $file->getPath() . DIRECTORY_SEPARATOR . $file->getFilename();
+            $newDirectory = $file->getPathname();
             $chapter->addPage($this->createPageFromFileInfo($file));
         }
         
@@ -119,7 +119,7 @@ class Mapper
         
         foreach($chapterFinder as $dir) {
             
-            $newDirectory = $dir->getPath() . DIRECTORY_SEPARATOR . $dir->getFilename();
+            $newDirectory = $dir->getPathname();
             //subdir to use as a chapter
             
             $chapter->addChapter(
