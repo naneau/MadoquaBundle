@@ -71,7 +71,6 @@ class Mapper
      */
     public function parseChapterDir(Chapter $chapter, $directory)
     {
-        echo $directory . ' ';
         $chapterFinder = new Finder();
         $chapterFinder
             ->in($directory)
