@@ -14,6 +14,7 @@ use Application\MadoquaBundle\Model\Book\Chapter as Chapter;
 
 use Application\MadoquaBundle\Filter\Filter;
 use Symfony\Component\Finder\Finder;
+
 /**
  * Mapper
  *
@@ -78,8 +79,15 @@ class Mapper
             //finder for the subdirs
         
         foreach($chapterFinder as $dir) {
+            
             $newDirectory = $dir->getPath() . DIRECTORY_SEPARATOR . $dir->getFilename();
-            $chapter->addChapter($this->parseChapterDir(new Chapter, $newDirectory));
+            //subdir to use as a chapter
+            
+            $chapter->addChapter(
+                $this->parseChapterDir($this->createChapterFromDirectoryName($dir->getFilename()), 
+                $newDirectory)
+            );
+            //parse on recursively
         }
         
         $pageFinder = new Finder();
@@ -92,10 +100,50 @@ class Mapper
         
         foreach($pageFinder as $file) {
             $newDirectory = $file->getPath() . DIRECTORY_SEPARATOR . $file->getFilename();
-            $chapter->addPage(new Page);
+            $chapter->addPage($this->createPageFromFileInfo($file));
         }
         
         
+        return $chapter;
+    }
+    
+    /**
+     * create page from FileInfo object
+     *
+     * @param FileInfo $fileInfo 
+     * @return Page
+     */
+    private function createPageFromFileInfo(\SplFileInfo $fileInfo)
+    {
+        $page = new Page($this->getFilter());
+        
+        $page->setText(file_get_contents((string) $fileInfo));
+        
+        $matches = array();
+        $found = preg_match('/#.*/', $page->getText(), $matches);
+        if ($found === false) {
+            $title = $file->getFilename();
+        } else {
+            $title = ltrim(array_shift($matches), '#');
+        }
+        $page->setTitle($title);
+        // //parse title out of body text
+        
+        return $page;
+        
+    }
+    
+    /**
+     * create chapter from directory name
+     *
+     * @param string $name 
+     * @return Chapter
+     */
+    private function createChapterFromDirectoryName($name)
+    {
+        $chapter = new Chapter;
+        
+        $chapter->setName($name);
         return $chapter;
     }
     

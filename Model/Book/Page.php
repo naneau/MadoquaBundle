@@ -9,6 +9,8 @@
 
 namespace Application\MadoquaBundle\Model\Book;
 
+use Application\MadoquaBundle\Filter\Filter;
+
 /**
  * Page
  * 
@@ -34,5 +36,93 @@ class Page
      */
     private $text;
     
+    /**
+     * filter for the text
+     *
+     * @var Filter
+     */
+    private $filter;
     
+    /**
+     * constructor
+     *
+     * @param Filter $filter 
+     */
+    public function __construct(Filter $filter)
+    {
+        $this->setFilter($filter);
+    }
+    
+    /**
+     * get filter
+     *
+     * @return Filter
+     */
+    public function getFilter()
+    {
+        return $this->filter;
+    }
+
+    /**
+     * set filter
+     *
+     * @param Filter $filter
+     * @return void
+     */
+    public function setFilter($filter)
+    {
+        $this->filter = $filter;
+    }
+    
+    /**
+     * get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * set title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+    
+    /**
+     * get text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * set text
+     *
+     * @param string $text
+     * @return void
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+    
+    /**
+     * get parsed text (in html)
+     *
+     * @return string
+     */
+    public function getParsedText()
+    {
+        return $this->getFilter()->filter($this->getText());
+    }
 }
