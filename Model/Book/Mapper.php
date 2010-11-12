@@ -25,6 +25,11 @@ use Symfony\Component\Finder\Finder;
 class Mapper
 {
     /**
+     * files to ignore
+     */
+    private static $ignoredFiles = array('README.markdown');
+    
+    /**
      * directory the posts live in
      *
      * @var string
@@ -98,6 +103,10 @@ class Mapper
             //finder for the subdirs
         
         foreach($pageFinder as $file) {
+            if (in_array($file->getFilename(), self::$ignoredFiles)) {
+                continue;
+            }
+            
             $newDirectory = $file->getPathname();
             $chapter->addPage($this->createPageFromFileInfo($file));
         }
