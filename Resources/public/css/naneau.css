@@ -421,7 +421,7 @@ pre {
 }
 /* @end */
 
-.chapter ul.chapters li a, .chapter ul.pages li a {
+.chapter ul.chapters li a, .chapter ul.pages li a, .chapter-up {
 	background-repeat: no-repeat;
 	padding: 0 0 0 20px;
 }
@@ -431,4 +431,7 @@ pre {
 }
 .chapter ul.pages li a  {
 	background-image: url(../images/page_white_text.png);
+}
+.chapter-up {
+	background-image: url(../images/book_previous.png);
 }

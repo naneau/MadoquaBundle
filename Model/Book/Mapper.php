@@ -58,7 +58,7 @@ class Mapper
     public function getToc()
     {
         $chapter = new Chapter;
-        $chapter->setName('TOC');
+        $chapter->setName('Table Of Contents');
         $chapter->setPath('toc');
         //simple chapter model
         
