@@ -46,7 +46,7 @@ class BookController extends Controller
     {
         $service = $this->container->get('service.book');
         
-        return $this->renderChapter($service->getTOC());
+        return $this->renderChapter($service->getChapterFromPath($path));
     }
     
     /**

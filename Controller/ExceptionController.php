@@ -28,6 +28,7 @@ class ExceptionController extends Controller
      */
     public function handleAction(FlattenException $exception)
     {
+        var_dump($exception);
         $response = $this->render('MadoquaBundle:Exception:handle', array('exception' => $exception));
         $response->setStatusCode($exception->getStatusCode());
         return $response;

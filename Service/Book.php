@@ -10,7 +10,7 @@
 namespace Application\MadoquaBundle\Service;
 
 use Application\MadoquaBundle\Model\Book\Page as Page;
-use Application\MadoquaBundle\Model\Chapter as Chapter;
+use Application\MadoquaBundle\Model\Book\Chapter as Chapter;
 use Application\MadoquaBundle\Model\Book\Mapper;
 
 /**
@@ -59,7 +59,30 @@ class Book
     {
         $toc = $this->getTOC();
         
+        return $this->findChapterFromPath($toc, $path);
+    }
+    
+    /**
+     * find chapter from path recursively
+     *
+     * @param Chapter $chapter 
+     * @param string $path 
+     * @return bool|Chapter
+     */
+    private function findChapterFromPath(Chapter $chapter, $path)
+    {
+        if ($chapter->getPath() == $path) {
+            return $chapter;
+        }
         
+        foreach($chapter->getChapters() as $subChapter) {
+            $found = $this->findChapterFromPath($subChapter, $path);
+            if ($found !== false) {
+                return $found;
+            }
+        }
+        
+        return false;
     }
     
     /**
