@@ -420,3 +420,15 @@ pre {
 	/*text-shadow: 1px 1px 1px rgba(0,0,0, 0.1);*/	
 }
 /* @end */
+
+.chapter ul.chapters li a, .chapter ul.pages li a {
+	background-repeat: no-repeat;
+	padding: 0 0 0 20px;
+}
+.chapter ul.chapters li a {
+	background-image: url(../images/book_open.png);
+	background-position: 0 2px;
+}
+.chapter ul.pages li a  {
+	background-image: url(../images/page_white_text.png);
+}
