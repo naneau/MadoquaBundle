@@ -60,6 +60,8 @@ class Mapper
         $chapter = new Chapter;
         $chapter->setName('TOC');
         $chapter->setPath('toc');
+        //simple chapter model
+        
         return $this->parseChapterDir($chapter, $this->getDirectory());
     }
     
@@ -125,8 +127,15 @@ class Mapper
         $page->setTitle($title);
         // //parse title out of body text
         
-        return $page;
+        $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
+        $path = str_replace(array(DIRECTORY_SEPARATOR, ' '), array('-', '-'), $path);
+        $path = str_replace('.markdown', '', $path);
+        $page->setPath(
+            $path
+        );
+        //set "path" like identifier
         
+        return $page;
     }
     
     /**

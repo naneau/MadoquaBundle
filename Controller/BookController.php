@@ -50,6 +50,21 @@ class BookController extends Controller
     }
     
     /**
+     * page action
+     *
+     * @param string $path 
+     * @return Response
+     */
+    public function pageAction($path)
+    {
+        $service = $this->container->get('service.book');
+        $page = $service->getPageFromPath($path);
+        return $this->render($this->container->getParameter('madoqua.view.scripts.book.pageread'), array(
+            'page' => $page
+        ));
+    }
+    
+    /**
      * render a chapter
      *
      * @param Chapter $chapter 
@@ -58,8 +73,8 @@ class BookController extends Controller
     private function renderChapter(Chapter $chapter)
     {
         return $this->render($this->container->getParameter('madoqua.view.scripts.book.chapterread'), array(
-                'chapter' => $chapter
-            ));
+            'chapter' => $chapter
+        ));
         //render the chapter view script
     }
 }

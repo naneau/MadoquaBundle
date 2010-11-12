@@ -86,6 +86,44 @@ class Book
     }
     
     /**
+     * get chapter from "path" identifier
+     *
+     * @param string $path 
+     * @return Chapter
+     */
+    public function getPageFromPath($path)
+    {
+        $toc = $this->getTOC();
+        
+        return $this->findPageFromPath($toc, $path);
+    }
+    
+    /**
+     * find chapter from path recursively
+     *
+     * @param Chapter $chapter 
+     * @param string $path 
+     * @return bool|Chapter
+     */
+    private function findPageFromPath(Chapter $chapter, $path)
+    {
+        foreach($chapter->getPages() as $page) {
+            if ($page->getPath() == $path) {
+                return $page;
+            }
+        }
+        
+        foreach($chapter->getChapters() as $subChapter) {
+            $found = $this->findPageFromPath($subChapter, $path);
+            if ($found !== false) {
+                return $found;
+            }
+        }
+        
+        return false;
+    }    
+    
+    /**
      * get Book by identifier
      *
      * @string $identifier

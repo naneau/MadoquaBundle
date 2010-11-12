@@ -42,7 +42,9 @@ $view->extend('MadoquaBundle::layout');
 
         <?php foreach($chapter->getPages() as $page) : ?>
         <li>
-            <?php echo $page->getTitle(); ?>
+            <a href="<?php echo $view['router']->generate('book_page', array('path' => $page->getPath())); ?>">
+                <?php echo $page->getTitle(); ?>
+            </a>
         </li>
         <?php endforeach; ?>
     

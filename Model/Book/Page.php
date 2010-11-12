@@ -59,6 +59,13 @@ class Page
     private $chapter;
     
     /**
+     * path (identifier)
+     *
+     * @var string
+     */
+    private $path;
+    
+    /**
      * constructor
      *
      * @param Filter $filter 
@@ -142,6 +149,27 @@ class Page
             $this->parsedText = $this->getFilter()->filter($this->getText());
         }
         return $this->parsedText;
+    }
+    
+    /**
+     * get path (identifier)
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * set path (identifier)
+     *
+     * @param string $path
+     * @return void
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
     }
     
     /**
