@@ -254,7 +254,7 @@ class Mapper
     private function parsePath(\SplFileInfo $fileInfo)
     {
         $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
-        $path = str_replace(array(DIRECTORY_SEPARATOR, ' '), array('-', '-'), $path);
+        $path = str_replace(array(DIRECTORY_SEPARATOR, ' ', '.'), '-', $path);
         $path = str_replace('.markdown', '', $path);
         return strtolower($path);
     }
