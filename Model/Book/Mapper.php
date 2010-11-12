@@ -71,7 +71,9 @@ class Mapper
     public function parseChapterDir(Chapter $chapter, $directory)
     {
         $this->parseChaptersInDirectory($chapter, $directory);
+        $this->parsePagesInDirectory($chapter, $directory);
         
+        return $chapter;
     }
     
     /**
