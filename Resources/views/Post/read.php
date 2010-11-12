@@ -1,4 +1,4 @@
-<?php $view->extend('MadoquaBundle::layout') ?>
+<?php $view->extend('MadoquaBundle::layout'); ?>
 
 <section class="blog-post-read">
     

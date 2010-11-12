@@ -103,36 +103,6 @@ class Mapper
     }
     
     /**
-     * parse sub-chapters in a given chapter directory
-     *
-     * @param Chapter $chapter 
-     * @param string $directory 
-     * @return Chapter
-     */
-    private function parseChaptersInDirectory(Chapter $chapter, $directory)
-    {
-        $chapterFinder = new Finder();
-        $chapterFinder
-            ->in($directory)
-            ->directories();
-            //finder for the subdirs
-        
-        foreach($chapterFinder as $dir) {
-            
-            $newDirectory = $dir->getPathname();
-            //subdir to use as a chapter
-            
-            $chapter->addChapter(
-                $this->parseChapterDir($this->createChapterFromDirectoryName($dir->getFilename()), 
-                $newDirectory)
-            );
-            //parse on recursively
-        }
-        
-        return $chapter;
-    }
-    
-    /**
      * create page from FileInfo object
      *
      * @param FileInfo $fileInfo 
@@ -159,16 +129,51 @@ class Mapper
     }
     
     /**
+     * parse sub-chapters in a given chapter directory
+     *
+     * @param Chapter $chapter 
+     * @param string $directory 
+     * @return Chapter
+     */
+    private function parseChaptersInDirectory(Chapter $chapter, $directory)
+    {
+        $chapterFinder = new Finder();
+        $chapterFinder
+            ->in($directory)
+            ->directories();
+            //finder for the subdirs
+        
+        foreach($chapterFinder as $dir) {
+            
+            $newDirectory = $dir->getPathname();
+            //subdir to use as a chapter
+            
+            $chapter->addChapter(
+                $this->parseChapterDir($this->createChapterFromFileInfo($dir), 
+                $newDirectory)
+            );
+            //parse on recursively
+        }
+        
+        return $chapter;
+    }
+
+    /**
      * create chapter from directory name
      *
      * @param string $name 
      * @return Chapter
      */
-    private function createChapterFromDirectoryName($name)
+    private function createChapterFromFileInfo(\SplFileInfo $fileInfo)
     {
         $chapter = new Chapter;
         
-        $chapter->setName($name);
+        $chapter->setName($fileInfo->getFilename());
+        $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
+
+        $chapter->setPath(
+            str_replace(DIRECTORY_SEPARATOR, '-', $path)
+        );
         return $chapter;
     }
     

@@ -28,6 +28,13 @@ class Chapter
     private $name;
     
     /**
+     * path from the root
+     *
+     * @var string
+     */
+    private $path;
+    
+    /**
      * pages in this chapter
      *
      * @var array[int]Page
@@ -124,5 +131,26 @@ class Chapter
     public function addChapter(Chapter $chapter) 
     {
         $this->chapters[] = $chapter;
+    }
+    
+    /**
+     * get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * set path
+     *
+     * @param string $path
+     * @return void
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
     }
 }

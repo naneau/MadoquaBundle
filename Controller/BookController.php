@@ -37,6 +37,19 @@ class BookController extends Controller
     }
     
     /**
+     * chapter
+     *
+     * @param string $path 
+     * @return Response
+     */
+    public function chapterAction($path)
+    {
+        $service = $this->container->get('service.book');
+        
+        return $this->renderChapter($service->getTOC());
+    }
+    
+    /**
      * render a chapter
      *
      * @param Chapter $chapter 
