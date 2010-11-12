@@ -20,5 +20,19 @@ namespace Application\MadoquaBundle\Model\Book;
  */
 class Page
 {
+    /**
+     * title
+     *
+     * @var string
+     */
+    private $title;
+    
+    /**
+     * text
+     *
+     * @var string
+     */
+    private $text;
+    
     
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+    
+    <services>
+        
+        <!--filter for the post text, is a chain of filters -->
+        <service id="model.book.filter" class="Application\MadoquaBundle\Filter\FilterChain">
+            
+            <!-- we start with markdown -->
+            <argument type="service">
+              <service class="Application\MadoquaBundle\Filter\Markdown">
+                  <argument type="service" id="markdown_parser" />
+              </service>
+            </argument>
+            
+            <!-- but we also want to look for <code>#lang</code> blocks for highlightin' -->
+            <argument type="service">
+              <service class="Application\MadoquaBundle\Filter\Code" />
+            </argument>
+            
+        </service>
+        
+        <service id="model.book.mapper" class="Application\MadoquaBundle\Model\Book\Mapper">
+            <argument type="string">%madoqua.book.directory%</argument>
+            <argument type="service" id="model.book.filter" />
+        </service>
+        
+        <service id="service.book" class="Application\MadoquaBundle\Service\Book">
+            <argument type="service" id="model.book.mapper" />
+        </service>
+        
+    </services>
+</container>

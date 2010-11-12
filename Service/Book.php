@@ -46,7 +46,7 @@ class Book
      */
     public function getToc()
     {
-        
+        return $this->mapper->getToc();
     }
     
     /**

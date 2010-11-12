@@ -5,3 +5,7 @@ home:
 post_read:
     pattern: post/:identifier
     defaults: {_controller: MadoquaBundle:Post:read}
+
+book_index:
+    pattern: book
+    defaults: {_controller: MadoquaBundle:Book:index}
