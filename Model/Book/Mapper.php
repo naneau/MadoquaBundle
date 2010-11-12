@@ -254,9 +254,17 @@ class Mapper
     private function parsePath(\SplFileInfo $fileInfo)
     {
         $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
+        //remove the part of the path that's the same as the base directory
+        
         $path = $this->stripNumberFromString($path);
+        //remove numbered part
+        
+        $path = str_replace('.markdown', '', $path);        
+        //remove .markdown
+        
         $path = str_replace(array(DIRECTORY_SEPARATOR, ' ', '.'), '-', $path);
-        $path = str_replace('.markdown', '', $path);
+        //replace some characters 
+        //FIXME this needs to be done proplery
         
         return strtolower($path);
     }
