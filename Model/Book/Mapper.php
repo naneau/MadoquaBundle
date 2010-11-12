@@ -59,7 +59,6 @@ class Mapper
     {
         $chapter = new Chapter;
         return $this->parseChapterDir($chapter, $this->getDirectory());
-        return $chapter;
     }
     
     /**
@@ -70,6 +69,44 @@ class Mapper
      * @return Chapter
      */
     public function parseChapterDir(Chapter $chapter, $directory)
+    {
+        $this->parseChaptersInDirectory($chapter, $directory);
+        
+    }
+    
+    /**
+     * parse all pages in directory
+     *
+     * @param Chapter $chapter 
+     * @param string $directory 
+     * @return Chapter
+     */
+    private function parsePagesInDirectory(Chapter $chapter, $directory)
+    {
+        $pageFinder = new Finder();
+        $pageFinder
+            ->in($directory)
+            ->files()
+            ->depth(0)
+            ->name('*.markdown');
+            //finder for the subdirs
+        
+        foreach($pageFinder as $file) {
+            $newDirectory = $file->getPath() . DIRECTORY_SEPARATOR . $file->getFilename();
+            $chapter->addPage($this->createPageFromFileInfo($file));
+        }
+        
+        return $chapter;
+    }
+    
+    /**
+     * parse sub-chapters in a given chapter directory
+     *
+     * @param Chapter $chapter 
+     * @param string $directory 
+     * @return Chapter
+     */
+    private function parseChaptersInDirectory(Chapter $chapter, $directory)
     {
         $chapterFinder = new Finder();
         $chapterFinder
@@ -88,20 +125,6 @@ class Mapper
             );
             //parse on recursively
         }
-        
-        $pageFinder = new Finder();
-        $pageFinder
-            ->in($directory)
-            ->files()
-            ->depth(0)
-            ->name('*.markdown');
-            //finder for the subdirs
-        
-        foreach($pageFinder as $file) {
-            $newDirectory = $file->getPath() . DIRECTORY_SEPARATOR . $file->getFilename();
-            $chapter->addPage($this->createPageFromFileInfo($file));
-        }
-        
         
         return $chapter;
     }
