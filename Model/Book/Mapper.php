@@ -127,11 +127,8 @@ class Mapper
         $page->setTitle($title);
         // //parse title out of body text
         
-        $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
-        $path = str_replace(array(DIRECTORY_SEPARATOR, ' '), array('-', '-'), $path);
-        $path = str_replace('.markdown', '', $path);
         $page->setPath(
-            $path
+            $this->parsePath($fileInfo)
         );
         //set "path" like identifier
         
@@ -180,9 +177,8 @@ class Mapper
         
         $chapter->setName($fileInfo->getFilename());
         
-        $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
         $chapter->setPath(
-            str_replace(DIRECTORY_SEPARATOR, '-', $path)
+            $this->parsePath($fileInfo)
         );
         //set "path" like identifier
         
@@ -245,4 +241,18 @@ class Mapper
     {
         $this->filter = $filter;
     }    
+    
+    /**
+     * parse path from file info
+     *
+     * @param SplFileInfo $fileInfo 
+     * @return string
+     */
+    private function parsePath(\SplFileInfo $fileInfo)
+    {
+        $path = trim(substr($fileInfo->getPathname() . DIRECTORY_SEPARATOR, strlen($this->getDirectory())), '/');
+        $path = str_replace(array(DIRECTORY_SEPARATOR, ' '), array('-', '-'), $path);
+        $path = str_replace('.markdown', '', $path);
+        return $path;
+    }
 }
