@@ -258,6 +258,8 @@ class Mapper
     
     /**
      * parse path from file info
+     * 
+     * this is teh fugly.
      *
      * @param SplFileInfo $fileInfo 
      * @return string
@@ -273,7 +275,13 @@ class Mapper
         $path = str_replace('.markdown', '', $path);        
         //remove .markdown
         
-        $path = str_replace(array(DIRECTORY_SEPARATOR, ' ', '.'), '-', $path);
+        $path = str_replace('-', '', $path);
+        //remove existing dashes
+        
+        $path = str_replace(DIRECTORY_SEPARATOR, '|', $path);
+        //dir separator to dash... pfft
+        
+        $path = str_replace(array(' ',), '-', $path);
         //replace some characters 
         //FIXME this needs to be done proplery
         
@@ -288,12 +296,22 @@ class Mapper
      */
     private function stripNumberFromString($string)
     {
-        $parts = explode('-', $string);
-        if (is_numeric(trim($parts[0]))) {
-            unset($parts[0]);
+        $newString = array();
+        $dirs = explode(DIRECTORY_SEPARATOR, $string);
+        foreach($dirs as $dirKey => $dir) {
+            
+            $parts = explode('-', $dir);
+            
+            foreach($parts as $key => $part) {
+                if (is_numeric(trim($part))) {
+                    unset($parts[$key]);
+                }
+            }
+
+            $newString[] = implode('', $parts);
+            
         }
-        $string = implode('-', $parts);
-        
-        return trim($string, '- ');
+       
+        return trim(implode('-', $newString), '- ');
     }
 }
