@@ -35,6 +35,20 @@ class Chapter
     private $path;
     
     /**
+     * parent chapter
+     *
+     * @var Chapter
+     */
+    private $parent;
+    
+    /**
+     * introduction text
+     *
+     * @var string
+     */
+    private $introduction;
+    
+    /**
      * pages in this chapter
      *
      * @var array[int]Page
@@ -47,13 +61,6 @@ class Chapter
      * @var array[int]Chapter
      */
     private $chapters = array();
-    
-    /**
-     * parent chapter
-     *
-     * @var Chapter
-     */
-    private $parent;
     
     /**
      * get name
@@ -74,6 +81,79 @@ class Chapter
     public function setName($name)
     {
         $this->name = $name;
+    }
+    
+    /**
+     * get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * set path
+     *
+     * @param string $path
+     * @return void
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+    
+    /**
+     * get parent chapter
+     *
+     * @return Chapter
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * set parent chapter
+     *
+     * @param Chapter $parent
+     * @return void
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+    
+    /**
+     * do we have a parent?
+     *
+     * @return bool
+     */
+    public function hasParent()
+    {
+        return !empty($this->parent);
+    }
+    
+    /**
+     * get intro text
+     *
+     * @return string
+     */
+    public function getIntro()
+    {
+        return $this->intro;
+    }
+
+    /**
+     * set intro text
+     *
+     * @param string $intro
+     * @return void
+     */
+    public function setIntro($intro)
+    {
+        $this->intro = $intro;
     }
     
     /**
@@ -141,57 +221,5 @@ class Chapter
     {
         $chapter->setParent($this);
         $this->chapters[] = $chapter;
-    }
-    
-    /**
-     * get path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * set path
-     *
-     * @param string $path
-     * @return void
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-    
-    /**
-     * get parent chapter
-     *
-     * @return Chapter
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * set parent chapter
-     *
-     * @param Chapter $parent
-     * @return void
-     */
-    public function setParent($parent)
-    {
-        $this->parent = $parent;
-    }
-    
-    /**
-     * do we have a parent?
-     *
-     * @return bool
-     */
-    public function hasParent()
-    {
-        return !empty($this->parent);
     }
 }

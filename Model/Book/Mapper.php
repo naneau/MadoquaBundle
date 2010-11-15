@@ -27,7 +27,7 @@ class Mapper
     /**
      * files to ignore
      */
-    private static $ignoredFiles = array('README.markdown');
+    private static $ignoredFiles = array('README.markdown', 'chapter.markdown');
     
     /**
      * directory the posts live in
@@ -99,6 +99,7 @@ class Mapper
             ->in($directory)
             ->files()
             ->depth(0)
+            ->sortByName()
             ->name('*.markdown');
             //finder for the subdirs
         
@@ -157,6 +158,7 @@ class Mapper
         $chapterFinder
             ->in($directory)
             ->depth(0)
+            ->sortByName()
             ->directories();
             //finder for the subdirs
         
