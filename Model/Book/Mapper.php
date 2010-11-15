@@ -278,9 +278,6 @@ class Mapper
         $path = str_replace('-', '', $path);
         //remove existing dashes
         
-        $path = str_replace(DIRECTORY_SEPARATOR, '|', $path);
-        //dir separator to dash... pfft
-        
         $path = str_replace(array(' ',), '-', $path);
         //replace some characters 
         //FIXME this needs to be done proplery
