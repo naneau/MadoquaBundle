@@ -17,3 +17,7 @@ book_chapter:
 book_page:
     pattern: book/page/:path
     defaults: {_controller: MadoquaBundle:Book:page}
+    
+book_full:
+    pattern: book/full
+    defaults: {_controller: MadoquaBundle:Book:full}
