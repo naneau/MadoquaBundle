@@ -21,3 +21,7 @@ book_page:
 book_full:
     pattern: book/full
     defaults: {_controller: MadoquaBundle:Book:full}
+
+book_toc:
+    pattern: book/toc
+    defaults: {_controller: MadoquaBundle:Book:toc}

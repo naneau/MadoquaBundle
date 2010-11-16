@@ -435,3 +435,7 @@ pre {
 .chapter-up {
 	background-image: url(../images/book_previous.png);
 }
+
+li.chapter {
+	padding:  0 0 0 10px;
+}

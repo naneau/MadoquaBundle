@@ -52,6 +52,22 @@ class BookController extends Controller
     }
     
     /**
+     * table of contents
+     *
+     * @return Response
+     */
+    public function tocAction()
+    {
+        $service = $this->container->get('service.book');
+        $book =  $service->getTOC();
+        
+        return $this->render($this->container->getParameter('madoqua.view.scripts.book.toc'), array(
+            'book' => $book
+        ));
+        
+    }
+    
+    /**
      * chapter
      *
      * @param string $path 
