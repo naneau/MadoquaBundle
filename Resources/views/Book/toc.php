@@ -7,14 +7,15 @@
  * @subpackage      View
  */
  
-$view->extend('MadoquaBundle::layout');
+$view->extend('MadoquaBundle::layout-book');
 
 use Application\MadoquaBundle\Model\Book\Page;
 use Application\MadoquaBundle\Model\Book\Chapter;
-use  Symfony\Bundle\FrameworkBundle\Templating\Engine as View;
+use Symfony\Bundle\FrameworkBundle\Templating\Engine as View;
 
 ?>
 <section class="toc">
+    <h1><?php echo $view['book']->getTitle(); ?></h1>
     <ul>
         <?php echo outputChapter($book->getRawValue(), $view); ?>
     </ul>
@@ -34,7 +35,7 @@ function outputChapter(Chapter $chapter, View $view)
 {
 ?>
     <li class="chapter">
-        <h1><?php echo $chapter->getName(); ?></h1>
+        <h2><?php echo $chapter->getName(); ?></h2>
     
         <?php if (count($chapter->getChapters()) > 0) : ?>
         <ul class="chapters">

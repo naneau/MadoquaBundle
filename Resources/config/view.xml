@@ -13,6 +13,11 @@
             <argument type="string">%madoqua.name%</argument>
             <tag name="templating.helper" alias="title" />
         </service>
+
+        <service id="templating.helper.book" class="Application\MadoquaBundle\Templating\Helper\Book">
+            <argument type="string">%madoqua.book.title%</argument>
+            <tag name="templating.helper" alias="book" />
+        </service>
                 
     </services>
 </container>
